@@ -1,0 +1,16 @@
+import counter from "<counter>";
+<let/test2={
+    value: 2,
+    width: 1,
+    size: 4
+}/>
+<let/current_item="counter"/>
+
+static {
+    const items = {
+        counter: counter,
+    };
+}
+<div>
+   <${counter}/>
+</div>

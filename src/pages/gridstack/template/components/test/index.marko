@@ -1,0 +1,31 @@
+import 'gridstack/dist/gridstack.min.css';
+import 'gridstack/dist/gridstack-extra.min.css'
+import  { GridStack } from "/node_modules/gridstack/dist/gridstack.js"
+import Counter from "<grid-stack-item>"
+
+<let/config=1/>
+<set=config>
+    <div class="grid-stack"></div>
+    <counter/>
+</set>
+<lifecycle onMount() { 
+    Counter.render
+    this.grid = GridStack.init({
+        column: 6,
+        oneColumnSize: 0,
+    });
+    this.grid.on('added', function(e, items) {
+        console.log('e',e)
+        console.log('items',items)
+        items.forEach((item) => {
+            const test = Counter.renderSync()
+            test.appendTo(item.el.querySelector('.grid-stack-item-content'))
+            const test2 = test.getComponent()
+            console.log('comp',test2)
+            console.log('comp',test2.___state)
+            console.log('comp',test.out)
+            console.log('comp',test.getOutput())
+        })
+    });
+    this.grid.addWidget({h:1, w: 2});
+}/>
